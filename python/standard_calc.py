@@ -45,29 +45,10 @@ def is_angle_between(first_angle, middle_angle, second_angle):
     middle_angle = bound_to_180(middle_angle)
     second_angle = bound_to_180(second_angle)
 
-    """First finds which areas between the first and second angles are less than or equal to 180 degrees,
-        and then checks to see if the middle angle is in that area
-    """
     if first_angle < second_angle:
-        if second_angle - first_angle >= 180:
-            if middle_angle < first_angle or middle_angle > second_angle:
-                """ if the angle between the first and second angles are greater than 180 degrees,
-                    check to see if the middle angle is NOT between them numerically
-                """
-                return True
-            else:
-                return False
-        elif middle_angle > first_angle and middle_angle < second_angle:
-            return True
-        else:
+        if middle_angle < first_angle or middle_angle > second_angle:
             return False
-    else:
-        if first_angle - second_angle >= 180:
-            if middle_angle > first_angle or middle_angle < second_angle:
-                return True
-            else:
-                return False
-        elif middle_angle < first_angle and middle_angle > second_angle:
-            return True
-        else:
+    elif first_angle > second_angle:
+        if middle_angle > first_angle or middle_angle < second_angle:
             return False
+    return True
